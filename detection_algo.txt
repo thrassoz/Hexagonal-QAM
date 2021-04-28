@@ -5,4 +5,4 @@ We implemented this by creating a list of all the x values of the given constell
 key->x_coordinate and value->[list of symbols that lie on the line x = x_coordinate]
 After finding the region where r_x lies on (denoted as x_region = [x1, x2]) we now have two possible lines of symbols (x = x1 and x=x2) that their symbols
 are candidates to minimize the value of {dotproduct(r,s) - energy(s)/2}.
-The idea of find where r_x lies on eliminates to n/4 the possible candidates and makes the detection faster (n is the number of constellation symbols).
+The idea of find where r_x lies on eliminates to sqrt(n) the possible candidates and makes the detection faster (n is the number of constellation symbols).
