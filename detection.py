@@ -50,10 +50,10 @@ if __name__ == '__main__':
     idx = 0
     errors = 0
     start = timeit.default_timer()
-    while idx<100000:
+    while idx<1000:
         #create a received symbol with AWGN
         n = (np.random.randn(1) + 1j*np.random.randn(1))/np.sqrt(2)  # AWGN with unity power No = 1
-        noise_power = 0.01 # SNR parameter
+        noise_power = 0.5 # SNR parameter
         send_symbol = np.random.choice(constellation, 1) #symbol that we sent
         r = send_symbol + n*np.sqrt(noise_power)  # received symbol
         #detection algo
@@ -95,6 +95,7 @@ if __name__ == '__main__':
         
         if canditate != send_symbol:
             errors += 1
+            
         idx += 1
     stop = timeit.default_timer()
     print(errors, stop-start)
