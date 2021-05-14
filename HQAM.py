@@ -267,15 +267,17 @@ def IrrHQAM(M, nn_dist=2):
     return irregular
 
 if __name__ == '__main__':
-    constellation = hqam(16, 2)  # Generate Constellation with nn_dist = 2
-    n = (np.random.randn(10000) + 1j*np.random.randn(10000))/np.sqrt(2)  # AWGN with unity power No = 1
+    constellation = IrrHQAM(16, 2)  # Generate Constellation with nn_dist = 2
+    n = np.random.normal(0,0.1,10000) + 1j*np.random.normal(0,0.1,10000)  # AWGN np.random.normal(mean, sigma, size)
+    #by changing sigma we change noise power and because energy per symol is fixed due to standard nn_dist we can 
+    #change SNR parameter
     noise_power = 0.5  # SNR parameter
-    r = np.random.choice(constellation, 10000) + n*np.sqrt(noise_power)  # received symbol
-    #energy = [np.real(symbol)**2 + np.imag(symbol)**2 for symbol in constellation]
-    #total = 0
-    #for k in energy:
-        #total += k
-    #print(total/64)
+    r = np.random.choice(constellation, 10000) + n  # received symbol
+    energy = [np.real(symbol)**2 + np.imag(symbol)**2 for symbol in constellation]
+    total = 0
+    for k in energy:
+        total += k
+    Es = total/16
     plt.plot(np.real(r), np.imag(r), '.')
     plt.grid(True)
     plt.show()
