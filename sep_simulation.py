@@ -53,7 +53,7 @@ sim = np.array([])
 for i in noise:
     idx =  0
     errors = 0
-    while idx < 100:
+    while idx < 10000000:
         n = np.random.normal(0,i,1) + 1j*np.random.normal(0,i,1)  # AWGN np.random.normal(mean, sigma, size)
         #by changing sigma we change noise power and because energy per symol is fixed due to standard nn_dist we can 
         #change SNR parameter
